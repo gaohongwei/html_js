@@ -4,11 +4,11 @@
 <% else %>
 <% obj_ns=[ns,@obj] %>
 <% end %>
-New Task
+<%= page_header(nil,tts('new task')) %>
 <div class="breadcrumb" >
   <%= semantic_bootstrap_nested_form_for obj_ns do |f| %>
     <%= f.inputs do %>
-      <%= f.label 'Parent:'+ @obj.parent.name if @obj.parent%>
+      <%= f.label tt('parent')+':'+ @obj.parent.name if @obj.parent%>
       <%= f.input :pid,:as => :hidden %>      
       <%= f.input :name,label:tt('name') %>
       <%= f.input :description, label:tts('description') %>   

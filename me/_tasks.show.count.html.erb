@@ -7,16 +7,17 @@
       <a class="btn btn-primary" ng-click="show_vote=!show_vote"><%=tt('count')%></a> 
       </span>
     </div> 
-    <div ng-if="show_vote && options[0][item.id].length>0">
+    <div ng-if="show_vote && counts[0][item.id].length>0">
       <table class="table table-striped table-bordered table-condensed">
       <tr><td><%=tt('option')%></td>
            <td><%=tt('count')%></td> 
       </tr>         
       <ol>
 
-        <tr ng-repeat="opt in options[0][item.id]">
+        <tr ng-repeat="opt in counts[0][item.id]">
         <row>
-        <td>{{opt.name}}</td><td>{{opt.count}}</td>  
+        <td>{{opt.name}}</td><td>{{opt.vote}}</td> 
+        <td>{{opt.task_id}}</td>
         </tr>
      
       </ol>
