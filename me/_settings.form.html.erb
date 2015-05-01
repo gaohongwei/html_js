@@ -7,10 +7,10 @@
 <div class="breadcrumb" >
   <%= semantic_bootstrap_nested_form_for obj_ns do |f| %>
     <%= f.inputs do %>
-      <%= f.input :var %>    
-      <%= f.input :value, :as => :text %>    
+      <%= f.input :var %> 
+      <%= f.input :thing_type %>            
+      <%= f.input :value, :as => :text %> 
     <% end %>
-
     <%= button_submit(f) %>
   <% end %>
 </div>

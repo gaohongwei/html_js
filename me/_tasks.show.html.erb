@@ -1,0 +1,12 @@
+<%= page_header(@obj,@header) %>
+
+<div class="breadcrumb">
+  <% @columns.each_with_index do |col,index| %>
+    <div class="row">
+        <strong><%= tt(@captions[index]) %></strong>:
+        <%=  @obj[col] %>
+    </div>
+  <% end %>
+</div>
+<%#= debug columns %>
+<%#= debug captions %>

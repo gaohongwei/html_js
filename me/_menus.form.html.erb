@@ -25,10 +25,10 @@
       <% if @obj.id > 10 %>
         <div class="form-inline"> 
 <%# f.input :authors, :as => :check_boxes, :collection => User.order("last_name ASC").all %>  
-        <%#= f_input(f,'dad:r',tts('parent menu')) %>             
+        <%#= f_input(f,'dad:r',tt('parent_menu')) %>             
         <%= f.input(:dad,:as => :radio, 
           :collection =>Menu.top,
-          :label =>tts('parent menu')) %> 
+          :label =>tt('parent_menu')) %> 
         </div>
       <% end %> 
       <div class="row"></div>      

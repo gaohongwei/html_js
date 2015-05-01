@@ -1,6 +1,5 @@
-<%= display(tt('join_task'))%></br>
-<%= render 'shared/share_to' %>
-<div ng-app="app" ng-controller='task_optionsController' ng-init="initialize(<%= @root_id %>,<%= @user_id %>,<%= @group_id %>)">
+<%= display(tt('menu'))%></br>
+<div ng-app="app" ng-controller='menusController' ng-init="initialize()">
   <script type="text/ng-template" id="actions">
     <a class="btn btn-primary" ng-click="item.edit_option=true"><%=tt('add_option')%></a>         
     <a class="btn btn-primary" ng-click="new_task(item)"><%=tt('add_child')%></a> 
@@ -8,15 +7,7 @@
     <a class="btn btn-primary" ng-click="show_task(item)"><%=tt('show_edit')%></a>
   </script> 
   <script type="text/ng-template" id="task_and_actions">
-    {{item.name}}</br>
-    {{item.description}}  
-    <div ng-if="item.id && item.id === root_id">   
-      <%= tt('group') %>:{{get_by_id(groups,group_id,'name')}}
-    </div> 
-    <div ng-if="item.id && item.id !== root_id">   
-      <%= tt('type') %>:{{get_by_id(types,item.type_id,'name')}}
-    </div> 
-    <%= tt('author') %>:{{item.user_vname}}                  
+    {{item.name}},url={{item.url}}                  
     <span ng-show="item.showDelete">
       <div ng-include="'actions'"></div>  
     </span> 
@@ -56,11 +47,7 @@
     <a class="btn btn-primary" ng-click="save_task(item)"><%=tt('save')%></a>
     <a class="btn btn-danger"  ng-click="hide_form(item)"><%=tt('cancel')%></a>
   </script>   
-  <script type="text/ng-template" id="edit_option">
-    <input type="text" ng-model="item.new">
-    <a class="btn btn-primary" ng-click="add_option(item)"><%=tt('save')%></a>
-    <a class="btn btn-danger" ng-click="item.edit_option=false"><%=tt('cancel')%></a>
-  </script> 
+
   
   <script type="text/ng-template" id="user_name">
       <%= tt('author') %>:{{opt.user_name}}    
@@ -73,10 +60,7 @@
       options:{{options}}</br> 
       options:{{options[item.id]}}</br>        
   --> 
-    <div ng-if="item.showOptionAction">    
-      <a class="btn btn-primary" ng-click="item.edit_option=true"><%=tt('add_option')%></a>      
-      <a class="btn btn-primary" ng-click="option_mgr(item)"><%=tt('option_mgr')%></a>  
-    </div>
+
     <span ng-show="item.show_save_answer">
       <a class="btn btn-primary" ng-click="save_answers(item)"><%=tt('save_option')%></a>
     </span>         
@@ -112,9 +96,7 @@
     <div class='well' ng-show="item.show_form_task">
       <div ng-include="'edit_task'"></div>       
     </div>    
-    <div ng-show="item.edit_option">
-      <div ng-include="'edit_option'"></div>       
-    </div>     
+
     <div ng-if="options[item.id].length>0" class='well' 
     ng-mouseenter="item.showOptionAction=true" 
     ng-mouseleave="item.showOptionAction=false" 
@@ -128,7 +110,7 @@
     </ol>
   </script>
   <ul>
-    <li ng-repeat="item in items" ng-include="'taskTree'"></li>
+    <li ng-repeat="item in menus" ng-include="'taskTree'"></li>
   </ul> 
 </div>
 

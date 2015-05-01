@@ -1,0 +1,27 @@
+<%= display(tt('menu'))%></br>
+<div ng-app="app" ng-controller='menusController' ng-init="initialize()">  
+  <script type="text/ng-template" id="tree"> 
+    <ul><tree-node ng-repeat="it in items" item="it"></tree-node></ul>
+  </script> 
+  <script type="text/ng-template" id="node">   
+    <li 
+    ng-mouseenter="item.showAction=true" 
+    ng-mouseleave="item.showAction=false" 
+    ng-swipe-left="item.showAction=true" 
+    ng-swipe-right="item.showAction=false"
+    ng-dblclick="item.showKids=!item.showKids" ng-init="item.showKids=true">
+    id={{item.id}},{{item.tname}}
+    <span ng-if="item.url">,url={{item.url}}</span>
+    <span ng-show="item.showAction">        
+      <a class="btn btn-primary" ng-click="$parent.new_item()"><%=tt('add_submenu')%></a> 
+      <a class="btn btn-primary" ng-click="edit_item(item)"><%=tt('edit_menu')%></a>          
+      <a class="btn btn-primary" ng-click="show_item(item)"><%=tt('show_menu')%></a>
+    </span>    
+    </li>   
+  </script> 
+  <table style="width: 100%">
+  <tbody><td>
+      <tree items="menus"></tree>
+  </td></tbody>
+  </table>       
+</div>

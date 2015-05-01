@@ -7,9 +7,9 @@
 <div class="breadcrumb" >
   <%= semantic_bootstrap_nested_form_for obj_ns do |f| %>
     <%= f.inputs do %>
-      <%= f.input :title,label:tt('title') %>       
-      <%= f.input :tag_list, label:tts('article type') %> 
-      <%= f.input :permalink, label:tts('link') %>            
+      <%= f.input :title,label:tt('paper_title') %>       
+      <%= f.input :tag_list, label:tt('article_type') %> 
+      <%= f.input :permalink, label:tt('link') %>            
       <%= f.input :content, :as => :ckeditor,:input_html => { :ckeditor => { :height => 400,:rows => 20, :cols => 50 } } %>    
     <% end %>
 
